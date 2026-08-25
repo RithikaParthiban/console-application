@@ -1,5 +1,4 @@
-#ifndef ATM_H
-#define ATM_H
+#pragma once
 #include <vector>
 #include "user.h"
 using namespace std;
@@ -12,4 +11,3 @@ class Atm{
         User* login(int accNum,int pin);
     
 };
-#endif

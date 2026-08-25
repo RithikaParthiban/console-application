@@ -1,5 +1,4 @@
-#ifndef USER_H
-#define USER_H
+#pragma once
 #include <string>
 using namespace std;
 class User{
@@ -19,4 +18,3 @@ class User{
         void deposit(double amount);
         void withdraw(double amount);      
 };
-#endif
