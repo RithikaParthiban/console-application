@@ -8,7 +8,7 @@ int main() {
     int accountNumber;
     int pin;
     int choice;
-    double amount;
+    size_t amount;
 
     std::cout << "===================" << std::endl;
     std::cout << "Welcome to the ATM!" << std::endl;
@@ -40,7 +40,8 @@ int main() {
                     std::cout << "1. Check Balance" << std::endl;
                     std::cout << "2. Deposit" << std::endl;
                     std::cout << "3. Withdraw" << std::endl;
-                    std::cout << "4. Exit" << std::endl;
+                    std::cout << "4. Delete Account" << std::endl;
+                    std::cout << "5. Exit" << std::endl;
                     std::cout << "Please enter your choice: ";
                     std::cin>>choice;
 
@@ -61,6 +62,18 @@ int main() {
                         Atm.save();
                         break;
                     case 4:
+                        std::cout << "Are you sure you want to delete your account? (1 for Yes, 0 for No): ";
+                        int confirm;
+                        std::cin >> confirm;
+                        if(confirm == 1){
+                            if(Atm.deleteAccount(accountNumber,pin)){
+                                std::cout << "Account deleted successfully!" << std::endl;
+                            } else {
+                                std::cout << "Error deleting the account!" << std::endl;
+                            }
+                        }
+                        break;
+                    case 5:
                         std::cout << "=============================" << std::endl;
                         std::cout << "Thank you for using the ATM!" << std::endl;
                         std::cout << "=============================" << std::endl;
@@ -73,8 +86,10 @@ int main() {
             }
             case 2: {
                 int newAccNum = Atm.createAccount();
+                std::cout << "=============================" << std::endl;
                 std::cout << "Account created successfully!" << std::endl;
                 std::cout << "Your account number is: " << newAccNum << std::endl;
+                std::cout << "=============================" << std::endl;
                 break;
             }
             case 3:

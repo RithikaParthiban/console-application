@@ -20,7 +20,7 @@ void userRepo::save(const std::vector<User>& users) {
         int accNum=user.getAccountNumber();
         std::string name=user.getName();
         int pin=user.getPin();
-        double balance=user.getBalance();
+        size_t balance=user.getBalance();
 
         file.write(reinterpret_cast<const char*>(&accNum),sizeof(accNum));
 
@@ -51,7 +51,7 @@ std::vector<User> userRepo::load() {
         int accNum,pin;
         std::string name;
         size_t length;
-        double balance;
+        size_t balance;
 
         file.read(reinterpret_cast<char*>(&accNum),sizeof(accNum));
 
