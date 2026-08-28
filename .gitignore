@@ -11,3 +11,6 @@ bin/
 # IDE/editor files
 .vscode/
 .idea/
+
+# ATM runtime data
+users.bin

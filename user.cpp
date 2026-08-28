@@ -1,47 +1,39 @@
-#include "user.h"
 #include <iostream>
-using namespace std;
-    User::User(int accNum,string name,int pin,double balance){
-        this->accountNumber=accNum;
-        this->name=name;
-        this->pin=pin;
-        this->balance=balance;
+#include "user.h"
+
+User::User(int accNum, std::string name, int pin, double balance) : 
+    accountNumber(accNum), name(name), pin(pin), balance(balance) {}
+    
+void User::setName(std::string name) { this -> name = name; }
+
+void User::setPin(int pin) { this -> pin = pin; }
+
+void User::deposit(double amount) {
+    if(amount <= 0) {
+        std::cout << "Invalid amount!" << std::endl;
+        return;
     }
-    int User::getAccountNumber(){
-        return accountNumber;
+    balance+=amount;
+    std::cout << "Deposit successful!Your new balance is: " << balance << std::endl;
+}
+
+void User::withdraw(double amount) {
+    if(amount <= 0) {
+        std::cout << "Invalid amount!" << std::endl;
+        return;
     }
-    string User::getName(){
-        return name;
+    if(amount > balance) {
+        std::cout << "Insufficient balance!" << std::endl;
+        return;
     }
-    void User::setName(string name){
-        this->name=name;
-    }
-    int User::getPin(){
-        return pin;
-    }
-    void User::setPin(int pin){
-        this->pin=pin;
-    }
-    double User::getBalance(){
-        return balance;
-    }
-    void User::deposit(double amount){
-        if(amount <= 0){
-            cout<<"Invalid amount!"<<endl;
-            return;
-        }
-        balance+=amount;
-        cout<<"Deposit successful!Your new balance is: "<<balance<<endl;
-    }
-    void User::withdraw(double amount){
-        if(amount <= 0){
-            cout<<"Invalid amount!"<<endl;
-            return;
-        }
-        if(amount>balance){
-            cout<<"Insufficient balance!"<<endl;
-            return;
-        }
-        balance-=amount;
-        cout<<"Withdrawal successful!Your new balance is: "<<balance<<endl;
-    }
+    balance -= amount;
+    std::cout<<"Withdrawal successful!Your new balance is: " << balance << std::endl;
+}
+
+int User::getAccountNumber() const { return accountNumber; }
+
+std::string User::getName() const { return name; }
+
+int User::getPin() const { return pin; }
+
+double User::getBalance() const { return balance; }

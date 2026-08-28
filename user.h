@@ -1,20 +1,24 @@
 #pragma once
+
 #include <string>
-using namespace std;
-class User{
+
+class User {
     private:
         int accountNumber;
-        string name;
+        std::string name;
         int pin;
         double balance;
+
     public:
-        User(int accNum,string name,int pin,double balance);
-        int getAccountNumber();
-        string getName();
-        void setName(string name);
-        int getPin();
+        User(int accNum, std::string name,int pin,double balance);
+
+        void setName(std::string name);
         void setPin(int pin);
-        double getBalance();
         void deposit(double amount);
-        void withdraw(double amount);      
+        void withdraw(double amount);   
+
+        int getAccountNumber() const;
+        std::string getName() const;
+        int getPin() const;
+        double getBalance() const;
 };

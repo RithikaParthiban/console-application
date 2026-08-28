@@ -1,13 +1,19 @@
 #pragma once
+
 #include <vector>
 #include "user.h"
-using namespace std;
-class Atm{
+#include "userRepo.h"
+
+class Atm {
     private:
-        vector<User> users;
+        std::vector<User> users;
+        userRepo repo;
+
     public:
         Atm();
+        ~Atm();
+
         int createAccount();
-        User* login(int accNum,int pin);
-    
+        User* login(int accNum, int pin);
+        void save();
 };
