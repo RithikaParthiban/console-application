@@ -81,7 +81,7 @@ int main() {
                     default:
                         std::cout << "Invalid choice!" << std::endl;
                     }
-                } while(choice != 4);
+                } while(choice != 5);
                 break;
             }
             case 2: {
